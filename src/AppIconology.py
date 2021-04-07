@@ -94,10 +94,10 @@ def photo():
     
     if st.button('See Original Image of Tom'):
         
-        original = Image.open('images/imagen01.jpg')
+        original = Image.open('images/demo.jpg')
         st.image(original, use_column_width=True)
         
-    image = cv2.imread('images/imagen01.jpg')
+    image = cv2.imread('images/demo.jpg')
     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     
     x = st.slider('Change Threshold value',min_value = 50,max_value = 255)
@@ -111,7 +111,7 @@ def photo():
     
     st.text("Press the button below to view Canny Edge Detection Technique")
     if st.button('Canny Edge Detector'):
-        image = load_image("images/imagen01.jpg")
+        image = load_image("images/demo.jpg")
         edges = cv2.Canny(image,50,300)
         cv2.imwrite('edges.jpg',edges)
         st.image(edges,use_column_width=True,clamp=True)
@@ -119,7 +119,7 @@ def photo():
     y = st.slider('Change Value to increase or decrease contours',min_value = 50,max_value = 255)     
     
     if st.button('Contours'):
-        im = load_image("images/imagen01.jpg")
+        im = load_image("images/demo.jpg")
           
         imgray = cv2.cvtColor(im,cv2.COLOR_BGR2GRAY)
         ret,thresh = cv2.threshold(imgray,y,255,0)
