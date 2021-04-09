@@ -92,14 +92,6 @@ def load_image(filename):
 
 def photo():
     st.header("Thresholding, Edge Detection and Contours")
-    archivo = st.file_uploader('Sube una imagen', type=['png', 'jpg', 'jpeg'])
-   
-    if archivo is not None:
-       imagen = np.array(Image.open(archivo))
-
-    else:
-       demo_image = IMAGEN_DEMO
-       image = np.array(Image.open(demo_image))
     
     if st.button('See Original Image of Tom'):
         
