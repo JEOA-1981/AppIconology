@@ -15,7 +15,7 @@ import tensorflow as tf
 from PIL import Image, ImageOps
 from torchvision import models, transforms
 
-from const import CLASSES, COLORS
+from const import CLASES, COLORES
 from settings import DEFAULT_CONFIDENCE_THRESHOLD, DEMO_IMAGE, MODEL, PROTOTXT
 
 
@@ -53,12 +53,12 @@ def annotate_image(
             (startX, startY, endX, endY) = box.astype("int")
 
             # display the prediction
-            label = f"{CLASSES[idx]}: {round(confidence * 100, 2)}%"
+            label = f"{CLASES[idx]}: {round(confidence * 100, 2)}%"
             labels.append(label)
-            cv2.rectangle(image, (startX, startY), (endX, endY), COLORS[idx], 2)
+            cv2.rectangle(image, (startX, startY), (endX, endY), COLORES[idx], 2)
             y = startY - 15 if startY - 15 > 15 else startY + 15
             cv2.putText(
-                image, label, (startX, y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, COLORS[idx], 2
+                image, label, (startX, y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, COLORES[idx], 2
             )
     return image, labels
 
