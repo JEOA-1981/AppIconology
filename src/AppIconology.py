@@ -103,11 +103,8 @@ def photo():
       
     if st.button('See Original Image of Tom'):
         
-        #original = Image.open('images/demo.jpg')
-        #st.image(original, use_column_width=True)
-        original = Image.open(image)
-        imagen = cv2.cvtColor(np.array(original), cv2.COLOR_BGR2RGB)
-        st.image(imagen, use_column_width=True)
+        original = Image.open('images/demo.jpg')
+        st.image(original, use_column_width=True)
         
     image = cv2.imread('images/demo.jpg')
     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
