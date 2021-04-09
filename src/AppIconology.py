@@ -152,7 +152,8 @@ def importacion_prediccion(datos_imagenes, modelo):
     prediccion = modelo.predict(img_reformada)
       
     as_strings = pd.DataFrame(["{0:.2f}%".format(val * 100) for val in prediccion[0]])
-    
+    as_strings.columns = ['Numbers as Strings']
+      
     return prediccion, as_strings
 
 modelo = tf.keras.models.load_model('modelo_clasificación.hdf5')
