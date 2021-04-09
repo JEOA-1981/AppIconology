@@ -104,9 +104,9 @@ def annotate_image(
 def identificacion_objetos():
    st.title('Detección de objetos con MobileNet SSD')
    img_file_buffer = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
-   confidence_threshold = st.slider(
-       "Confidence threshold", 0.0, 1.0, UMBRAL_CONFIANZA_DEFECTO, 0.05
-   )
+   #confidence_threshold = st.slider(
+    #   "Confidence threshold", 0.0, 1.0, UMBRAL_CONFIANZA_DEFECTO, 0.05
+   #)
 
    if img_file_buffer is not None:
        image = np.array(Image.open(img_file_buffer))
@@ -116,7 +116,7 @@ def identificacion_objetos():
        image = np.array(Image.open(demo_image))
 
    detections = process_image(image)
-   image, labels = annotate_image(image, detections, confidence_threshold)
+   image, labels = annotate_image(image, detections)#, confidence_threshold)
 
    st.image(
        image, caption=f"Processed image", use_column_width=True,
