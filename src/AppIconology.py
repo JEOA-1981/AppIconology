@@ -29,7 +29,7 @@ def process_image(image):
     blob = cv2.dnn.blobFromImage(
         cv2.resize(image, (300, 300)), 0.007843, (300, 300), 127.5
     )
-    net = cv2.dnn.readNetFromCaffe(PROTOTXT, MODEL)
+    net = cv2.dnn.readNetFromCaffe(PROTOTXT, MODELO)
     net.setInput(blob)
     detections = net.forward()
     return detections
@@ -37,7 +37,7 @@ def process_image(image):
 
 @st.cache
 def annotate_image(
-    image, detections, confidence_threshold=DEFAULT_CONFIDENCE_THRESHOLD
+    image, detections, confidence_threshold=UMBRAL_CONFIANZA_DEFECTO
 ):
     # loop over the detections
     (h, w) = image.shape[:2]
@@ -67,14 +67,14 @@ def deteccion_objetos():
    st.title('Detección de objetos con MobileNet SSD')
    img_file_buffer = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
    confidence_threshold = st.slider(
-       "Confidence threshold", 0.0, 1.0, DEFAULT_CONFIDENCE_THRESHOLD, 0.05
+       "Confidence threshold", 0.0, 1.0, UMBRAL_CONFIANZA_DEFECTO, 0.05
    )
 
    if img_file_buffer is not None:
        image = np.array(Image.open(img_file_buffer))
 
    else:
-       demo_image = DEMO_IMAGE
+       demo_image = IMAGEN_DEMO
        image = np.array(Image.open(demo_image))
 
    detections = process_image(image)
