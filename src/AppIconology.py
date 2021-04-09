@@ -124,7 +124,7 @@ def photo():
     
     if st.button('Contours'):
         #im = load_image("images/demo.jpg")
-         im = load_image(imagen)
+        im = load_image(imagen)
             
         imgray = cv2.cvtColor(im,cv2.COLOR_BGR2GRAY)
         ret,thresh = cv2.threshold(imgray,y,255,0)
