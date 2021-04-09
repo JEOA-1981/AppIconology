@@ -185,7 +185,7 @@ def clasificacion():
             
         st.text('Probabilidad (0: dibujo, 1: grabado, 2: iconografía, 3: pintura, 4: escultura)')
         st.write(prediccion)
-        st.write(as_strings)
+        st.dataframe(as_strings)
         st.info('Explicación de porcentajes')
 
 
