@@ -93,19 +93,19 @@ def identificacion_objetos():
        imagen = np.array(Image.open(archivo))
 
    else:
-       imagen_demo = IMAGEN_DEMO
-       imagen = np.array(Image.open(imagen_demo))
+       imagen_defecto = IMAGEN_DEMO
+       imagen = np.array(Image.open(imagen_defecto))
 
    detecciones = procesamiento(imagen)
    imagen, etiquetas = anotar(imagen, detecciones, umbral_confianza)
 
-   st.image(imagen, caption= 'Imagen procesada', use_column_width= True,)
+   st.image(imagen, caption= 'Imagen con objetos identificados', use_column_width= True,)
 
    st.write(etiquetas)
 
-def load_image(filename):
-    image = cv2.imread(filename)
-    return image
+def cargar_imagen(archivo):
+    imagen = cv2.imread(archivo)
+    return imagen
 
 def deteccion_contornos_bordes():
     archivo = st.file_uploader('Sube una imagen (se admiten archivos .png, .jpg y .jpeg)', type= ['png', 'jpg', 'jpeg'])
@@ -113,11 +113,10 @@ def deteccion_contornos_bordes():
         imagen = np.array(Image.open(archivo))
     
     else:
-        imagen_demo = IMAGEN_DEMO
-        imagen = np.array(Image.open(imagen_demo))
+        imagen_defecto = IMAGEN_DEMO
+        imagen = np.array(Image.open(imagen_defecto))
         
     y = st.slider('Cambia los valores para incrementar o disminuir la detección de contornos',min_value = 50,max_value = 255)  
-    
     
     boton_uno, boton_dos = st.beta_columns(2)
     with boton_uno:
@@ -136,9 +135,7 @@ def deteccion_contornos_bordes():
         
             st.image(trillado, use_column_width= True, clamp= True)
             st.image(img, use_column_width= True, clamp= True)
-
-        
-            
+       
 def importacion_prediccion(datos_imagenes, modelo):
     tamano = (75, 75)
     imagen = ImageOps.fit(datos_imagenes, tamano, Image.ANTIALIAS)
