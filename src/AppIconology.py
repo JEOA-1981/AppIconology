@@ -133,8 +133,7 @@ def photo():
         st.image(thresh, use_column_width=True, clamp = True)
         st.image(img, use_column_width=True, clamp = True)
         
-        
-        
+            
 def importacion_prediccion(datos_imagenes, modelo):
     tamano = (75, 75)
     imagen = ImageOps.fit(datos_imagenes, tamano, Image.ANTIALIAS)
