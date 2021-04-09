@@ -91,36 +91,41 @@ def load_image(filename):
 
 def photo():
     st.header("Thresholding, Edge Detection and Contours")
+    imagen = st.file_uploader('Sube una imagen', type=['png', 'jpg', 'jpeg'])
     
     if st.button('See Original Image of Tom'):
         
-        original = Image.open('images/demo.jpg')
+        #original = Image.open('images/demo.jpg')
+        original = Image.open(imagen)
         st.image(original, use_column_width=True)
         
-    image = cv2.imread('images/demo.jpg')
-    image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    #image = cv2.imread('images/demo.jpg')
+    #image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    image = cv2.imread(imagen)
+    image = cv2.cvtColor(imagen, cv2.COLOR_BGR2GRAY)
     
     x = st.slider('Change Threshold value',min_value = 50,max_value = 255)
-    ret,thresh1 = cv2.threshold(image,x,255,cv2.THRESH_BINARY)
+    ret,thresh1 = cv2.threshold(imagen,x,255,cv2.THRESH_BINARY)
     thresh1 = thresh1.astype(np.float64)
     st.image(thresh1, use_column_width=True,clamp = True)
     
-    st.text("Bar Chart of the image")
-    histr = cv2.calcHist([image],[0],None,[256],[0,256])
-    st.bar_chart(histr)
+    #st.text("Bar Chart of the image")
+    #histr = cv2.calcHist([image],[0],None,[256],[0,256])
+    #st.bar_chart(histr)
     
     st.text("Press the button below to view Canny Edge Detection Technique")
     if st.button('Canny Edge Detector'):
-        image = load_image("images/demo.jpg")
-        edges = cv2.Canny(image,50,300)
+        image = load_image(imagen)
+        edges = cv2.Canny(imagen,50,300)
         cv2.imwrite('edges.jpg',edges)
         st.image(edges,use_column_width=True,clamp=True)
       
     y = st.slider('Change Value to increase or decrease contours',min_value = 50,max_value = 255)     
     
     if st.button('Contours'):
-        im = load_image("images/demo.jpg")
-          
+        #im = load_image("images/demo.jpg")
+         im = load_image(imagen)
+            
         imgray = cv2.cvtColor(im,cv2.COLOR_BGR2GRAY)
         ret,thresh = cv2.threshold(imgray,y,255,0)
         #image, contours, hierarchy = cv2.findContours(thresh,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
