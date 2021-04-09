@@ -38,24 +38,18 @@ def bienvenida():
     st.markdown("""Esta aplicación web ha sido desarrollada por Jesús Eduardo Oliva Abarca, como parte de un proyecto general de investigación 
     que parte del enfoque de la analítica cultural de Lev Manovich, el cual aborda las aplicaciones de las herramientas, métodos y técnicas
     de la ciencia de datos para el estudio de conjuntos de datos culturales masivos.
-    En esta aplicación, el usuario puede examinar los datos extraídos —a través de técnicas de "raspado de red" (o *web scraping*),
-    así como del sitio *Web Robots* (https://webrobots.io/)— de las páginas de *Ideame* (https://www.idea.me/), y de *Kicstarter* 
-    (https://www.kickstarter.com/mexico), para identificar patrones y tendencias relativas al micromecenazgo cultural y creativo en
-    México y América Latina.""")
-    st.markdown("""El propósito de esta aplicación es ofrecer a las interesadas e interesados una herramienta de análisis para la toma de
-                decisiones en lo que respecta a las posibilidades de financiamiento de sus proyectos culturales y creativos, así como en
-                lo relativo a las categorías y temas en los que exista una mayor probabilidad de éxito.""")
-    st.markdown("""Es importante indicar, que para la obtención de los conjuntos de datos en los que se basa esta aplicación, se respetaron
-    los protocolos de estándar de exclusión de robots que aparecen en los archivos "robots.txt" de cada página. Además, es 
-    pertinente indicar el reconocimiento a las páginas antes citadas, que son sitios confiables y seguros, dedicados a la financiación 
-    de proyectos de diverso tipo. También, se reconoce el esfuerzo de creadoras y creadores, promotores y promotoras, gestoras y gestores, 
-    y demás personas involucradas en la cultura, las artes y la creatividad, que optan por la alternativa del micromecenazgo para promover 
-    y continuar con sus actividades.""")
-    st.markdown("""Los datos empleados para esta aplicación son tratados con todo respeto y confidencialidad, y se solicita a todo usuario su
-    apoyo para promover tanto las páginas de *Ideame* y *Kicstarter*, entre otras más dedicadas a la financiación colectiva, así como
-    para difundir el trabajo de artistas, productores, diseñadores y demás profesionales de la cultura y de la creatividad.
-    Un último aspecto a señalar es que ambos conjuntos de datos corresponden a los proyectos existentes en ambos sitios hasta el mes de
-    septiembre de 2020.
+    En esta aplicación, el usuario puede examinar el funcionamiento de algunas aplicaciones generales de la visión computacional, como lo 
+    son la identificación de objetos, la detección de bordes y contornos, y la clasificación automatizada de imágenes. Aunque la aplicación está pensada
+    para operar con imágenes de obras artísticas, funciona también con imágenes de diferentes tipos y clases.""")
+    st.markdown("""El propósito de esta aplicación es comprobar si las técnicas de procesamiento de la visión computacional son de utilidad 
+    para la identificación de los elementos esenciales en una obra de arte de la plástica, y, con base en ello, facilitar y agilizar el análisis de la 
+    imagen artística para los y las interesadas en este tema.""")
+    st.markdown("""Es importante indicar que, en lo que respecta a la sección de clasificación de imágenes, el modelo para esta parte se entrenó
+    empleando el conjunto de datos provisto por el usuario 'Danil', de Kaggle, en el siguiente 
+    enlace: https://www.kaggle.com/thedownhill/art-images-drawings-painting-sculpture-engraving. Sin embargo, el sistema de clasificación resultante
+    es todavía inexacto, y requiere ser re-entreando con ejemplos más diversificados, o, en su defecto, ajustar los parámetros de entrenamiento según las
+    características de las imágenes a clasificar.""")
+    st.markdown("""
     Cualquier duda o comentario: 
         
     jeduardo.oliv@gmail.com""")
