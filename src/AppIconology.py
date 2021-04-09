@@ -103,7 +103,9 @@ def photo():
       
     if st.button('See Original Image of Tom'):
         
-        original = Image.open('images/demo.jpg')
+        #original = Image.open('images/demo.jpg')
+        #st.image(original, use_column_width=True)
+        original = Image.open(image)
         st.image(original, use_column_width=True)
         
     image = cv2.imread('images/demo.jpg')
