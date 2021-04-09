@@ -106,9 +106,9 @@ def photo():
     thresh1 = thresh1.astype(np.float64)
     st.image(thresh1, use_column_width=True,clamp = True)
     
-    st.text("Bar Chart of the image")
-    histr = cv2.calcHist([image],[0],None,[256],[0,256])
-    st.bar_chart(histr)
+    #st.text("Bar Chart of the image")
+    #histr = cv2.calcHist([image],[0],None,[256],[0,256])
+    #st.bar_chart(histr)
     
     st.text("Press the button below to view Canny Edge Detection Technique")
     if st.button('Canny Edge Detector'):
