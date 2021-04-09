@@ -95,8 +95,8 @@ def photo():
     
     if st.button('See Original Image of Tom'):
         
-        #original = Image.open('images/demo.jpg')
-        original = Image.open(imagen)
+        original = Image.open('images/demo.jpg')
+        #original = Image.open(imagen)
         st.image(original, use_column_width=True)
         
     image = cv2.imread('images/demo.jpg')
@@ -123,8 +123,8 @@ def photo():
     y = st.slider('Change Value to increase or decrease contours',min_value = 50,max_value = 255)     
     
     if st.button('Contours'):
-        #im = load_image("images/demo.jpg")
-        im = load_image(imagen)
+        im = load_image("images/demo.jpg")
+        #im = load_image(imagen)
             
         imgray = cv2.cvtColor(im,cv2.COLOR_BGR2GRAY)
         ret,thresh = cv2.threshold(imgray,y,255,0)
