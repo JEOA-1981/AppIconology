@@ -20,9 +20,48 @@ from settings import UMBRAL_CONFIANZA_DEFECTO, IMAGEN_DEMO, MODELO, PROTOTXT
 
 
 def main():
-   deteccion_objetos()
-   photo()
-   clasificacion()
+   st.title('Caso de estudio: Visión computacional para el estudio de las artes plásticas')
+   opcion = st.sidebar.selectbox(label= 'Selecciona una opción',
+                                  options= ['Bienvenida', 'Identificación básica de objetos',
+                                            'Detección de bordes y contornos',
+                                            'Clasificación automatizada de obras de la plástica'])
+   if opcion == 'Bienvenida':
+       bienvenida()
+   elif opcion == 'Identificación básica de objetos':
+       identificacion_objetos()
+   elif opcion == 'Detección de bordes y contornos':
+       deteccion_contornos_bordes()
+   elif opcion == 'Clasificación automatizada de obras de la plástica':
+       clasificacion()
+
+def bienvenida():
+    st.markdown("""Esta aplicación web ha sido desarrollada por Jesús Eduardo Oliva Abarca, como parte de un proyecto general de investigación 
+    que parte del enfoque de la analítica cultural de Lev Manovich, el cual aborda las aplicaciones de las herramientas, métodos y técnicas
+    de la ciencia de datos para el estudio de conjuntos de datos culturales masivos.
+    En esta aplicación, el usuario puede examinar los datos extraídos —a través de técnicas de "raspado de red" (o *web scraping*),
+    así como del sitio *Web Robots* (https://webrobots.io/)— de las páginas de *Ideame* (https://www.idea.me/), y de *Kicstarter* 
+    (https://www.kickstarter.com/mexico), para identificar patrones y tendencias relativas al micromecenazgo cultural y creativo en
+    México y América Latina.""")
+    st.markdown("""El propósito de esta aplicación es ofrecer a las interesadas e interesados una herramienta de análisis para la toma de
+                decisiones en lo que respecta a las posibilidades de financiamiento de sus proyectos culturales y creativos, así como en
+                lo relativo a las categorías y temas en los que exista una mayor probabilidad de éxito.""")
+    st.markdown("""Es importante indicar, que para la obtención de los conjuntos de datos en los que se basa esta aplicación, se respetaron
+    los protocolos de estándar de exclusión de robots que aparecen en los archivos "robots.txt" de cada página. Además, es 
+    pertinente indicar el reconocimiento a las páginas antes citadas, que son sitios confiables y seguros, dedicados a la financiación 
+    de proyectos de diverso tipo. También, se reconoce el esfuerzo de creadoras y creadores, promotores y promotoras, gestoras y gestores, 
+    y demás personas involucradas en la cultura, las artes y la creatividad, que optan por la alternativa del micromecenazgo para promover 
+    y continuar con sus actividades.""")
+    st.markdown("""Los datos empleados para esta aplicación son tratados con todo respeto y confidencialidad, y se solicita a todo usuario su
+    apoyo para promover tanto las páginas de *Ideame* y *Kicstarter*, entre otras más dedicadas a la financiación colectiva, así como
+    para difundir el trabajo de artistas, productores, diseñadores y demás profesionales de la cultura y de la creatividad.
+    Un último aspecto a señalar es que ambos conjuntos de datos corresponden a los proyectos existentes en ambos sitios hasta el mes de
+    septiembre de 2020.
+    Cualquier duda o comentario: 
+        
+    jeduardo.oliv@gmail.com""")
+    
+    st.markdown('https://github.com/JEOA-1981')
+    st.markdown('https://www.linkedin.com/in/jes%C3%BAs-eduardo-oliva-abarca-78b615157/')
 
 @st.cache
 def process_image(image):
@@ -33,7 +72,6 @@ def process_image(image):
     net.setInput(blob)
     detections = net.forward()
     return detections
-
 
 @st.cache
 def annotate_image(
@@ -63,7 +101,7 @@ def annotate_image(
             )
     return image, labels
 
-def deteccion_objetos():
+def identificacion_objetos():
    st.title('Detección de objetos con MobileNet SSD')
    img_file_buffer = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
    confidence_threshold = st.slider(
@@ -90,8 +128,8 @@ def load_image(filename):
     image = cv2.imread(filename)
     return image
 
-def photo():
-    archivo = st.file_uploader('Sube una imagen', type= ['png', 'jpg', 'jpeg'])
+def deteccion_contornos_bordes():
+    archivo = st.file_uploader('Sube una imagen (se admiten archivos .png, .jpg y .jpeg)', type= ['png', 'jpg', 'jpeg'])
     if archivo is not None:
         imagen = np.array(Image.open(archivo))
     
@@ -99,22 +137,27 @@ def photo():
         imagen_demo = IMAGEN_DEMO
         imagen = np.array(Image.open(imagen_demo))
         
-    y = st.slider('Change Value to increase or decrease contours',min_value = 50,max_value = 255)  
+    y = st.slider('Cambia los valores para incrementar o disminuir la detección de contornos',min_value = 50,max_value = 255)  
     
-    #img = cv2.imread('imágenes/davinci_anunciación.jpg', 0)
-    edges = cv2.Canny(imagen,100,200)
-    st.image([imagen, edges])
     
-    imgray = cv2.cvtColor(imagen,cv2.COLOR_BGR2GRAY)
-    ret,thresh = cv2.threshold(imgray,y,255,0)
-        #image, contours, hierarchy = cv2.findContours(thresh,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
-    contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    boton_uno, boton_dos = st.beta_columns(2)
+    with boton_uno:
+        if st.checkbox('Detectar bordes', key= 0):
+            bordes = cv2.Canny(imagen,100,200)
+            st.image([imagen, bordes])
+    
+    with boton_dos:
+        if st.checkbox('Detectar contornos', key= 1):
+            imagen_cv2 = cv2.cvtColor(imagen,cv2.COLOR_BGR2GRAY)
+            reticula, trillado = cv2.threshold(imagen_cv2,y,255,0)
+            contornos, jerarquia = cv2.findContours(trillado, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
         
-    img = cv2.drawContours(imagen, contours, -1, (0,255,0), 3)
+            img = cv2.drawContours(imagen, contornos, -1, (0,255,0), 3)
  
         
-    st.image(thresh, use_column_width=True, clamp = True)
-    st.image(img, use_column_width=True, clamp = True)
+            st.image(trillado, use_column_width= True, clamp= True)
+            st.image(img, use_column_width= True, clamp= True)
+
         
             
 def importacion_prediccion(datos_imagenes, modelo):
