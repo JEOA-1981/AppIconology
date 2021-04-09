@@ -99,10 +99,10 @@ def photo():
         original = Image.open(imagen)
         st.image(original, use_column_width=True)
         
-    #image = cv2.imread('images/demo.jpg')
-    #image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    image = cv2.imread(imagen)
-    image = cv2.cvtColor(imagen, cv2.COLOR_BGR2GRAY)
+    image = cv2.imread('images/demo.jpg')
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    #image = cv2.imread(imagen)
+    #image = cv2.cvtColor(imagen, cv2.COLOR_BGR2GRAY)
     
     x = st.slider('Change Threshold value',min_value = 50,max_value = 255)
     ret,thresh1 = cv2.threshold(imagen,x,255,cv2.THRESH_BINARY)
