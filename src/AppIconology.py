@@ -22,7 +22,7 @@ from settings import DEFAULT_CONFIDENCE_THRESHOLD, DEMO_IMAGE, MODEL, PROTOTXT
 def main():
    deteccion_objetos()
    # photo()
-    clasificacion()
+   clasificacion()
 
 @st.cache
 def process_image(image):
