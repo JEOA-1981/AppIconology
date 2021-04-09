@@ -16,7 +16,7 @@ from PIL import Image, ImageOps
 from torchvision import models, transforms
 
 from const import CLASES, COLORES
-from settings import DEFAULT_CONFIDENCE_THRESHOLD, DEMO_IMAGE, MODEL, PROTOTXT
+from settings import UMBRAL_CONFIANZA_DEFECTO, IMAGEN_DEMO, MODELO, PROTOTXT
 
 
 def main():
