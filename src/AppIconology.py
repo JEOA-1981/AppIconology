@@ -94,13 +94,21 @@ def photo():
     st.header("Thresholding, Edge Detection and Contours")
     archivo = st.file_uploader("Sube una imagen", type=["png", "jpg", "jpeg"])
     
-    
+    if archivo is not None:
+       image = np.array(Image.open(archivo))
+
+   else:
+       demo_image = IMAGEN_DEMO
+       image = np.array(Image.open(demo_image))
+      
     if st.button('See Original Image of Tom'):
         
         original = Image.open('images/demo.jpg')
         st.image(original, use_column_width=True)
         
-    image = cv2.imread('images/demo.jpg')
+    #image = cv2.imread('images/demo.jpg')
+    #image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    image = cv2.imread(image)
     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     
     x = st.slider('Change Threshold value',min_value = 50,max_value = 255)
