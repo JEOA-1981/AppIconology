@@ -91,43 +91,30 @@ def load_image(filename):
     return image
 
 def photo():
-    st.header("Thresholding, Edge Detection and Contours")
+    archivo = st.file_uploader('Sube una imagen', type= ['png', 'jpg', 'jpeg'])
+    if archivo is not None:
+        imagen = np.array(Image.open(archivo))
     
-    if st.button('See Original Image of Tom'):
+    else:
+        imagen_demo = IMAGEN_DEMO
+        imagen = np.array(Image.open(imagen_demo))
         
-        original = Image.open('images/imagen01.jpg')
-        st.image(original, use_column_width=True)
-        
-    image = cv2.imread('images/demo.jpg')
-    image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    y = st.slider('Change Value to increase or decrease contours',min_value = 50,max_value = 255)  
     
-    x = st.slider('Change Threshold value',min_value = 50,max_value = 255)
-    ret,thresh1 = cv2.threshold(image,x,255,cv2.THRESH_BINARY)
-    thresh1 = thresh1.astype(np.float64)
-    st.image(thresh1, use_column_width=True,clamp = True)
+    #img = cv2.imread('imágenes/davinci_anunciación.jpg', 0)
+    edges = cv2.Canny(imagen,100,200)
+    st.image([imagen, edges])
     
-    st.text("Press the button below to view Canny Edge Detection Technique")
-    if st.button('Canny Edge Detector'):
-        image = load_image("images/demo.jpg")
-        edges = cv2.Canny(image,50,300)
-        cv2.imwrite('edges.jpg',edges)
-        st.image(edges,use_column_width=True,clamp=True)
-      
-    y = st.slider('Change Value to increase or decrease contours',min_value = 50,max_value = 255)     
-    
-    if st.button('Contours'):
-        im = load_image("images/demo.jpg")
-          
-        imgray = cv2.cvtColor(im,cv2.COLOR_BGR2GRAY)
-        ret,thresh = cv2.threshold(imgray,y,255,0)
+    imgray = cv2.cvtColor(imagen,cv2.COLOR_BGR2GRAY)
+    ret,thresh = cv2.threshold(imgray,y,255,0)
         #image, contours, hierarchy = cv2.findContours(thresh,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
-        contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
         
-        img = cv2.drawContours(im, contours, -1, (0,255,0), 3)
+    img = cv2.drawContours(imagen, contours, -1, (0,255,0), 3)
  
         
-        st.image(thresh, use_column_width=True, clamp = True)
-        st.image(img, use_column_width=True, clamp = True)
+    st.image(thresh, use_column_width=True, clamp = True)
+    st.image(img, use_column_width=True, clamp = True)
         
             
 def importacion_prediccion(datos_imagenes, modelo):
