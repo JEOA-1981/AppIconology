@@ -97,7 +97,7 @@ def photo():
     if archivo is not None:
        image = np.array(Image.open(archivo))
 
-   else:
+    else:
        demo_image = IMAGEN_DEMO
        image = np.array(Image.open(demo_image))
       
