@@ -64,7 +64,7 @@ def annotate_image(
     return image, labels
 
 def deteccion_objetos():
-   st.title("Object detection with MobileNet SSD")
+   st.title('Detección de objetos con MobileNet SSD')
    img_file_buffer = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
    confidence_threshold = st.slider(
        "Confidence threshold", 0.0, 1.0, DEFAULT_CONFIDENCE_THRESHOLD, 0.05
