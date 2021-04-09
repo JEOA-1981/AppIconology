@@ -20,7 +20,7 @@ from settings import DEFAULT_CONFIDENCE_THRESHOLD, DEMO_IMAGE, MODEL, PROTOTXT
 
 
 def main():
-    photo()
+   # photo()
     clasificacion()
 
 @st.cache
