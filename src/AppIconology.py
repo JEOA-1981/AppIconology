@@ -85,7 +85,9 @@ def anotar(imagen, detecciones, umbral_confianza= UMBRAL_CONFIANZA_DEFECTO):
     return imagen, etiquetas
 
 def identificacion_objetos():
-   st.title('Detección de objetos con MobileNet SSD')
+   st.title('Identificación de objetos con MobileNet SSD')
+   with st.beta_expander('Explicación de sección)'):
+        st.info('''Explicación de sección''')
    archivo = st.file_uploader('Sube una imagen (se admiten archivos .png, .jpg y .jpeg)', type=["png", "jpg", "jpeg"])
    umbral_confianza = st.slider('Umbral de confianza', 0.0, 1.0, UMBRAL_CONFIANZA_DEFECTO, 0.05)
 
@@ -108,6 +110,9 @@ def cargar_imagen(archivo):
     return imagen
 
 def deteccion_contornos_bordes():
+    st.title('Detección de bordes y contornos')
+    with st.beta_expander('Explicación de sección)'):
+        st.info('''Explicación de sección''')
     archivo = st.file_uploader('Sube una imagen (se admiten archivos .png, .jpg y .jpeg)', type= ['png', 'jpg', 'jpeg'])
     if archivo is not None:
         imagen = np.array(Image.open(archivo))
@@ -150,6 +155,9 @@ modelo = tf.keras.models.load_model('modelo_clasificación.hdf5')
 
 
 def clasificacion():
+    st.title('Clasificación de imágenes de obras de la plástica')
+    with st.beta_expander('Explicación de sección)'):
+        st.info('''Explicación de sección''')
     st.info('Las categorías de la clasificación son: a) dibujo, b) grabado, c) iconografía, d) pintura, e) escultura')
     archivo = st.file_uploader('Por favor, suba un archivo de imagen (.png, .jpg)', type= ['jpg', 'png'])
 
