@@ -92,6 +92,8 @@ def load_image(filename):
 
 def photo():
     st.header("Thresholding, Edge Detection and Contours")
+    archivo = st.file_uploader("Sube una imagen", type=["png", "jpg", "jpeg"])
+    
     
     if st.button('See Original Image of Tom'):
         
