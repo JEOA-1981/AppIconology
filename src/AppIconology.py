@@ -21,7 +21,7 @@ from settings import UMBRAL_CONFIANZA_DEFECTO, IMAGEN_DEMO, MODELO, PROTOTXT
 
 def main():
    deteccion_objetos()
-   # photo()
+   photo()
    clasificacion()
 
 @st.cache
@@ -92,7 +92,14 @@ def load_image(filename):
 
 def photo():
     st.header("Thresholding, Edge Detection and Contours")
-    imagen = st.file_uploader('Sube una imagen', type=['png', 'jpg', 'jpeg'])
+    archivo = st.file_uploader('Sube una imagen', type=['png', 'jpg', 'jpeg'])
+   
+    if archivo is not None:
+       imagen = np.array(Image.open(archivo))
+
+    else:
+       demo_image = IMAGEN_DEMO
+       image = np.array(Image.open(demo_image))
     
     if st.button('See Original Image of Tom'):
         
