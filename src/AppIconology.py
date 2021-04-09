@@ -7,6 +7,7 @@
 import streamlit as st
 import cv2
 import numpy as np
+import pandas as pd
 import os
 import matplotlib.pyplot as plt
 import torch
@@ -149,7 +150,10 @@ def importacion_prediccion(datos_imagenes, modelo):
     img_redimensionada = (cv2.resize(img, dsize= (75, 75), interpolation= cv2.INTER_CUBIC))/255.0
     img_reformada = img_redimensionada[np.newaxis, ...]
     prediccion = modelo.predict(img_reformada)
-    return prediccion
+      
+    as_strings = pd.DataFrame(["{0:.2f}%".format(val * 100) for val in prediccion[0]])
+    
+    return prediccion, as_strings
 
 modelo = tf.keras.models.load_model('modelo_clasificación.hdf5')
 
@@ -181,6 +185,7 @@ def clasificacion():
             
         st.text('Probabilidad (0: dibujo, 1: grabado, 2: iconografía, 3: pintura, 4: escultura)')
         st.write(prediccion)
+        st.write(as_strings)
         st.info('Explicación de porcentajes')
 
 
