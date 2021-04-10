@@ -182,7 +182,9 @@ def clasificacion():
             
         st.text('Probabilidad (0: dibujo, 1: grabado, 2: iconografía, 3: pintura, 4: escultura)')
         st.write(prediccion)
-        st.info('Explicación de porcentajes')
+        st.info("""Los valores numéricos que se muestran corresponden a las probabilidades con las que el modelo clasifica a una imagen como pertenciente
+        a las categorías establecidas. En este caso, un valor de 0.7801 corresponde a un porcentaje de 78%, mientras que una cifra de 0.0426 sería el equivalente
+        a 4%.""")
 
 
 if __name__ == '__main__':
