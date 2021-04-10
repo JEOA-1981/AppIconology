@@ -180,7 +180,7 @@ def clasificacion():
             st.write('Es una escultura')
             
         st.text('Probabilidad (0: dibujo, 1: grabado, 2: iconografía, 3: pintura, 4: escultura)')
-        st.write(prediccion)
+        st.write([i for i in prediccion])
         st.info('Explicación de porcentajes')
 
 
