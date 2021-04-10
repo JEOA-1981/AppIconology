@@ -45,12 +45,11 @@ def bienvenida():
     para la identificación de los elementos esenciales en una obra de arte de la plástica, y, con base en ello, facilitar y agilizar el análisis de la 
     imagen artística para los y las interesadas en este tema.""")
     st.markdown("""Es importante indicar que la identificación de objetos se realiza con un modelo pre-entrenado, por lo que su uso para el examen de imágenes
-    artísticas es ante todo un ensayo para el entrenamiento ulterior de un modelo empleando imágenes específicamente del ámbito artístico; en lo que respecta 
-    a la sección de clasificación de imágenes, el modelo para esta parte se entrenó
-    empleando el conjunto de datos provisto por el usuario 'Danil', de Kaggle, en el siguiente 
-    enlace: https://www.kaggle.com/thedownhill/art-images-drawings-painting-sculpture-engraving. Sin embargo, el sistema de clasificación resultante
-    es todavía inexacto, y requiere ser re-entreando con ejemplos más diversificados, o, en su defecto, ajustar los parámetros de entrenamiento según las
-    características de las imágenes a clasificar.""")
+    artísticas es todavía muy inexacto, y ante todo, es un ensayo para un modelo mejorado, cuyo entrenamiento se realice con base en imágenes del ámbito 
+    artístico; en lo que respecta a la sección de clasificación de imágenes, el modelo para esta parte se entrenó empleando el conjunto de datos provisto por el usuario 'Danil', 
+    de Kaggle (https://www.kaggle.com/thedownhill/art-images-drawings-painting-sculpture-engraving.)
+    Sin embargo, el sistema de clasificación resultante es todavía inexacto, y requiere ser re-entreando con ejemplos más diversificados, o, en su defecto,
+    ajustar los parámetros de entrenamiento según las características de las imágenes a clasificar.""")
     st.markdown("""
     Cualquier duda o comentario: 
         
