@@ -47,7 +47,7 @@ def bienvenida():
     st.markdown("""Es importante indicar que la identificación de objetos se realiza con un modelo pre-entrenado, por lo que su uso para el examen de imágenes
     artísticas es todavía muy inexacto, y ante todo, es un ensayo para un modelo mejorado, cuyo entrenamiento se realice con base en imágenes del ámbito 
     artístico; en lo que respecta a la sección de clasificación de imágenes, el modelo para esta parte se entrenó empleando el conjunto de datos provisto por el usuario 'Danil', 
-    de Kaggle (https://www.kaggle.com/thedownhill/art-images-drawings-painting-sculpture-engraving.)
+    de Kaggle (https://www.kaggle.com/thedownhill/art-images-drawings-painting-sculpture-engraving).
     Sin embargo, el sistema de clasificación resultante es todavía inexacto, y requiere ser re-entreando con ejemplos más diversificados, o, en su defecto,
     ajustar los parámetros de entrenamiento según las características de las imágenes a clasificar.""")
     st.markdown("""
@@ -167,8 +167,12 @@ modelo = tf.keras.models.load_model('modelo_clasificación.hdf5')
 
 def clasificacion():
     st.subheader('Clasificación de imágenes de obras de la plástica')
-    with st.beta_expander('Explicación de sección'):
-        st.info('''Explicación de sección''')
+    with st.beta_expander('Especificaciones sobre el modelo de clasificación'):
+        st.info('''Este modelo fue entrenado a partir del corpus provisto por el usuario "Danil", en el sitio web Kaggle 
+        (https://www.kaggle.com/thedownhill/art-images-drawings-painting-sculpture-engraving). Las cinco categorías empleadas para el entrenamiento corresponden
+        a cinco formas expresivas de las artes plásticas: el dibujo, el grabado, la iconografía (imágenes correspondientes a una narrativa cosmogónica o 
+        tradiciones míticas), la pintura y la escultura. El modelo, cabe señalar, es inexacto, por lo que se incluye en esta aplicación con fines meramente
+        ilustrativos.''')
     st.info('Las categorías de la clasificación son: a) dibujo, b) grabado, c) iconografía, d) pintura, e) escultura')
     archivo = st.file_uploader('Por favor, suba un archivo de imagen (.png, .jpg)', type= ['jpg', 'png'])
 
