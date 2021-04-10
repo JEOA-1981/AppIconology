@@ -16,7 +16,7 @@ from PIL import Image, ImageOps
 from torchvision import models, transforms
 
 from const import CLASES, COLORES
-from settings import UMBRAL_CONFIANZA_DEFECTO, IMAGEN_DEMO, MODELO, PROTOTXT
+from settings import UMBRAL_CONFIANZA_DEFECTO, IMAGEN_DEFECTO, MODELO, PROTOTXT
 
 
 def main():
@@ -96,7 +96,7 @@ def identificacion_objetos():
        imagen = np.array(Image.open(archivo))
 
    else:
-       imagen_defecto = IMAGEN_DEMO
+       imagen_defecto = IMAGEN_DEFECTO
        imagen = np.array(Image.open(imagen_defecto))
 
    detecciones = procesamiento(imagen)
@@ -119,7 +119,7 @@ def deteccion_contornos_bordes():
         imagen = np.array(Image.open(archivo))
     
     else:
-        imagen_defecto = IMAGEN_DEMO
+        imagen_defecto = IMAGEN_DEFECTO
         imagen = np.array(Image.open(imagen_defecto))
         
     y = st.slider('Cambia los valores para incrementar o disminuir la detección de contornos',min_value = 50,max_value = 255)  
