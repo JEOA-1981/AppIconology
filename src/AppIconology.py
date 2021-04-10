@@ -116,8 +116,12 @@ def cargar_imagen(archivo):
 
 def deteccion_contornos_bordes():
     st.subheader('Detección de bordes y contornos')
-    with st.beta_expander('Explicación de sección)'):
-        st.info('''Explicación de sección''')
+    with st.beta_expander('Información sobre bordes y contornos'):
+        st.info('''La detección de bordes se basa en el algoritmo de Canny, desarrollado por John F. Canny en 1986. En la visión computacional, el algoritmo
+        lleva a cabo primero un filtrado y reducción del "ruido", o variaciones aleatorias de la luminosidad y del color en la imagen; después, se localizan
+        los gradiente de intensidad, esto es, las zonas de mayor concentración o intensidad luminosa o cromática, y finalmente, se remueven y se suprimen los
+        píxeles innecesarios en la imagen
+        La detección de contornos, por su parte''')
     archivo = st.file_uploader('Sube una imagen (se admiten archivos .png, .jpg y .jpeg)', type= ['png', 'jpg', 'jpeg'])
     if archivo is not None:
         imagen = np.array(Image.open(archivo))
