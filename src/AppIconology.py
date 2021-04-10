@@ -168,7 +168,7 @@ modelo = tf.keras.models.load_model('modelo_clasificación.hdf5')
 def clasificacion():
     st.subheader('Clasificación de imágenes de obras de la plástica')
     with st.beta_expander('Especificaciones sobre el modelo de clasificación'):
-        st.info('''Este modelo fue entrenado a partir del corpus provisto por el usuario "Danil", en el sitio web Kaggle 
+        st.info('''Este modelo fue entrenado a partir del *corpora* provisto por el usuario "Danil", en el sitio web Kaggle 
         (https://www.kaggle.com/thedownhill/art-images-drawings-painting-sculpture-engraving). Las cinco categorías empleadas para el entrenamiento corresponden
         a cinco formas expresivas de las artes plásticas: el dibujo, el grabado, la iconografía (imágenes correspondientes a una narrativa cosmogónica o 
         tradiciones míticas), la pintura y la escultura. El modelo, cabe señalar, es inexacto, por lo que se incluye en esta aplicación con fines meramente
