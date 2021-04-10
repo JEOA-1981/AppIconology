@@ -87,8 +87,11 @@ def anotar(imagen, detecciones, umbral_confianza= UMBRAL_CONFIANZA_DEFECTO):
 
 def identificacion_objetos():
    st.subheader('Identificación de objetos con MobileNet SSD')
-   with st.beta_expander('Explicación de sección'):
-        st.info('''Explicación de sección''')
+   with st.beta_expander('¿Qué es MobileNet SSD'):
+        st.info('''El modelo MobileNet SSD se basa en una red neural de "Aprendizaje Profundo" (*Deep Learning*) diseñada para una la detección de objetos
+        mediante la localización de atributos diferenciadores y su separación con base a "cajas" contenedoras predefinidas. Si se desea profundizar en este tema,
+        puede consultarse el siguiente artículo, Liu, W., Anguelov, D., Erhan, D., Szegedy, C., Reed, S., Fu, C.-Y., & Berg, A. C. (2016). 
+        SSD: Single Shot MultiBox Detector. ArXiv:1512.02325 [Cs], 9905, 21–37. https://doi.org/10.1007/978-3-319-46448-0_2''')
    archivo = st.file_uploader('Sube una imagen (se admiten archivos .png, .jpg y .jpeg)', type=["png", "jpg", "jpeg"])
    umbral_confianza = st.slider('Umbral de confianza', 0.0, 1.0, UMBRAL_CONFIANZA_DEFECTO, 0.05)
 
