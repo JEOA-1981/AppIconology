@@ -151,10 +151,9 @@ def importacion_prediccion(datos_imagenes, modelo):
     img_reformada = img_redimensionada[np.newaxis, ...]
     prediccion = modelo.predict(img_reformada)
       
-    as_strings = pd.DataFrame(["{0:.2f}%".format(val * 100) for val in prediccion[0]])
-    as_strings.columns = ['Numbers as Strings']
+    prueba = (pd.Series(prediccion) * 10).round(2).astype(str) + " %"
       
-    return prediccion, as_strings
+    return prediccion, prueba
 
 modelo = tf.keras.models.load_model('modelo_clasificación.hdf5')
 
@@ -186,7 +185,7 @@ def clasificacion():
             
         st.text('Probabilidad (0: dibujo, 1: grabado, 2: iconografía, 3: pintura, 4: escultura)')
         st.write(prediccion)
-        st.dataframe(as_strings)
+        st.write(prueba)
         st.info('Explicación de porcentajes')
 
 
