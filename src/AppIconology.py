@@ -120,8 +120,10 @@ def deteccion_contornos_bordes():
         st.info('''La detección de bordes se basa en el algoritmo de Canny, desarrollado por John F. Canny en 1986. En la visión computacional, el algoritmo
         lleva a cabo primero un filtrado y reducción del "ruido", o variaciones aleatorias de la luminosidad y del color en la imagen; después, se localizan
         los gradiente de intensidad, esto es, las zonas de mayor concentración o intensidad luminosa o cromática, y finalmente, se remueven y se suprimen los
-        píxeles innecesarios en la imagen
-        La detección de contornos, por su parte''')
+        píxeles innecesarios en la imagen. Para mayor información, véase: https://docs.opencv.org/3.4/da/d5c/tutorial_canny_detector.html''')
+        st.info('''Los contornos, por su parte, se definen como las líneas en las que convergen todos los puntos, de similar intensidad, que 
+        conforman la figura de un objeto. En el estudio de imágenes artísticas, la detección de contornos podría ser de utilidad para analizar las formas y las
+        texturas predominantes en una obra, o en un conjunto de piezas artísticas. Para mayor información, véase: https://docs.opencv.org/master/d4/d73/tutorial_py_contours_begin.html''')
     archivo = st.file_uploader('Sube una imagen (se admiten archivos .png, .jpg y .jpeg)', type= ['png', 'jpg', 'jpeg'])
     if archivo is not None:
         imagen = np.array(Image.open(archivo))
