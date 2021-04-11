@@ -174,7 +174,7 @@ def clasificacion():
         tradiciones míticas), la pintura y la escultura. El modelo, cabe señalar, es inexacto, por lo que se incluye en esta aplicación con fines meramente
         ilustrativos.''')
     st.info('Las categorías de la clasificación son: a) dibujo, b) grabado, c) iconografía, d) pintura, e) escultura')
-    archivo = st.file_uploader('Por favor, suba un archivo de imagen (.png, .jpg)', type= ['jpg', 'png'])
+    archivo = st.file_uploader('Por favor, suba un archivo de imagen (.png, .jpg, .jpeg)', type= ['jpg', 'png', 'jpeg'])
 
     if archivo is None:
         st.text('No has subido ninguna imagen')
