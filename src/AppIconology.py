@@ -136,7 +136,7 @@ def deteccion_contornos_bordes():
     
     boton_uno, boton_dos = st.beta_columns(2)
     with boton_uno:
-        if st.checkbox('Detectar bordes', key= 0):
+        if st.checkbox('Detectar bordes', key= 4):
             bordes = cv2.Canny(imagen,100,200)
             st.image([imagen, bordes])
     
