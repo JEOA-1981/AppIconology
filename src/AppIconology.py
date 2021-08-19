@@ -141,7 +141,7 @@ def deteccion_contornos_bordes():
             st.image([imagen, bordes])
     
     with boton_dos:
-        if st.checkbox('Detectar contornos', key= 1):
+        if st.checkbox('Detectar contornos'):
             imagen_cv2 = cv2.cvtColor(imagen,cv2.COLOR_BGR2GRAY)
             reticula, trillado = cv2.threshold(imagen_cv2,y,255,0)
             contornos, jerarquia = cv2.findContours(trillado, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
