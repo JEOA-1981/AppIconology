@@ -1,7 +1,7 @@
 matplotlib
 numpy
 streamlit
-opencv-python
+opencv-contrib-python
 torch
 torchvision
 ImageHash
