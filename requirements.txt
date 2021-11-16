@@ -2,8 +2,10 @@ matplotlib
 numpy
 streamlit
 opencv-python
+opencv-python-headless
 torch
 torchvision
 ImageHash
 tensorflow
 Pillow
+
